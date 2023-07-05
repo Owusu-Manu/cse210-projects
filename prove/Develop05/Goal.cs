@@ -1,5 +1,3 @@
-using System;
-
 abstract class Goal
 {
     private string _name;
