@@ -1,5 +1,3 @@
-using System;
-
 class ChecklistGoal : Goal
 {
     private int _requiredCount;
