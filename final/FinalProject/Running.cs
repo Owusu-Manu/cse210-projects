@@ -1,17 +1,21 @@
-class Running : Exercise
+using System;
+
+public class Running : Exercise
 {
-    public override void start()
+    public double Distance { get; set; }
+
+    public override void DisplayExerciseInfo()
     {
-        Console.WriteLine("Running started");
+        Console.WriteLine($"Exercise: {Name}");
+        Console.WriteLine($"Duration: {Duration.TotalMinutes} minutes");
+        Console.WriteLine($"Intensity: {Intensity}");
+        Console.WriteLine($"Distance: {Distance} km");
     }
 
-    public override void pause()
+    public override double CalculateCaloriesBurned()
     {
-        Console.WriteLine("Running paused");
-    }
-
-    public override void stop()
-    {
-        Console.WriteLine("Running stopped");
+        double caloriesPerMinute = 10.0 + (Intensity * 2.0);
+        double totalCaloriesBurned = caloriesPerMinute * Duration.TotalMinutes;
+        return totalCaloriesBurned;
     }
 }
