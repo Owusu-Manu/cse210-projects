@@ -1,48 +1,38 @@
 using System;
 using System.Collections.Generic;
 
-class FitnessTracker
+public class FitnessTracker
 {
-    private User user;
     private List<Exercise> exercises;
-    private List<Goal> goals;
 
-    public void addUser(User user)
+    public FitnessTracker()
     {
-        this.user = user;
+        exercises = new List<Exercise>();
     }
 
-    public void addExercise(Exercise exercise)
+    public void AddExercise(Exercise exercise)
     {
-        if (exercises == null)
-            exercises = new List<Exercise>();
-
         exercises.Add(exercise);
+        Console.WriteLine($"Added {exercise.Name} to the fitness tracker.\n");
     }
 
-    public void addGoal(Goal goal)
+    public void DisplayExercises()
     {
-        if (goals == null)
-            goals = new List<Goal>();
-
-        goals.Add(goal);
+        Console.WriteLine("Fitness Tracker Exercises:");
+        foreach (var exercise in exercises)
+        {
+            exercise.DisplayExerciseInfo();
+            Console.WriteLine();
+        }
     }
 
-    public void trackExercise(Exercise exercise)
+    public double CalculateTotalCaloriesBurned()
     {
-        // Perform tracking logic here
-        Console.WriteLine("Tracking exercise: " + exercise.getName());
-    }
-
-    public List<Exercise> generateRecommendations()
-    {
-        // Generate exercise recommendations
-        return new List<Exercise>();
-    }
-
-    public void displayProgress()
-    {
-        // Display progress logic here
-        Console.WriteLine("Displaying progress");
+        double totalCaloriesBurned = 0.0;
+        foreach (var exercise in exercises)
+        {
+            totalCaloriesBurned += exercise.CalculateCaloriesBurned();
+        }
+        return totalCaloriesBurned;
     }
 }
