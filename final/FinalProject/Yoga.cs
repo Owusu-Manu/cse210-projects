@@ -1,17 +1,21 @@
-class Yoga : Exercise
+using System;
+
+public class Yoga : Exercise
 {
-    public override void start()
+    public string Pose { get; set; }
+
+    public override void DisplayExerciseInfo()
     {
-        Console.WriteLine("Yoga started");
+        Console.WriteLine($"Exercise: {Name}");
+        Console.WriteLine($"Duration: {Duration.TotalMinutes} minutes");
+        Console.WriteLine($"Intensity: {Intensity}");
+        Console.WriteLine($"Pose: {Pose}");
     }
 
-    public override void pause()
+    public override double CalculateCaloriesBurned()
     {
-        Console.WriteLine("Yoga paused");
-    }
-
-    public override void stop()
-    {
-        Console.WriteLine("Yoga stopped");
+        double caloriesPerMinute = 5.0 + (Intensity * 1.0);
+        double totalCaloriesBurned = caloriesPerMinute * Duration.TotalMinutes;
+        return totalCaloriesBurned;
     }
 }
