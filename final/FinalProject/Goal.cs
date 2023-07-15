@@ -1,15 +1,14 @@
-class Goal
+using System;
+
+public class Goal
 {
-    private string target;
-    private int duration;
+    public string Description { get; set; }
+    public DateTime Deadline { get; set; }
 
-    public string getTarget()
+    public void DisplayGoalInfo()
     {
-        return target;
-    }
-
-    public int getDuration()
-    {
-        return duration;
+        Console.WriteLine($"Description: {Description}");
+        Console.WriteLine($"Deadline: {Deadline.ToShortDateString()}");
+        Console.WriteLine();
     }
 }
