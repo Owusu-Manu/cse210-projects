@@ -1,32 +1,41 @@
 using System;
-using System.Collections.Generic;
 
-public class Program
+class Program
 {
-    public static void Main(string[] args)
+    static void Main()
     {
-        // Create instances and use the FitnessTracker class
-        FitnessTracker tracker = new FitnessTracker();
-        User user = new User();
-        user.setName("John Doe");
-        tracker.addUser(user);
+        FitnessTracker fitnessTracker = new FitnessTracker();
 
-        Exercise running = new Running();
-        Exercise weightlifting = new Weightlifting();
-        Exercise yoga = new Yoga();
-        tracker.addExercise(running);
-        tracker.addExercise(weightlifting);
-        tracker.addExercise(yoga);
+        fitnessTracker.AddExercise(new Running
+        {
+            Name = "Morning Run",
+            Duration = TimeSpan.FromMinutes(30),
+            Intensity = 5,
+            Distance = 5.0
+        });
 
-        Goal goal = new Goal();
-        goal.setTarget("Weight Loss");
-        goal.setDuration(30);
-        tracker.addGoal(goal);
+        fitnessTracker.AddExercise(new Weightlifting
+        {
+            Name = "Strength Training",
+            Duration = TimeSpan.FromMinutes(45),
+            Intensity = 8,
+            Sets = 3,
+            Reps = 10
+        });
 
-        tracker.trackExercise(running);
+        fitnessTracker.AddExercise(new Yoga
+        {
+            Name = "Evening Yoga",
+            Duration = TimeSpan.FromMinutes(60),
+            Intensity = 3,
+            Pose = "Warrior II"
+        });
 
-        List<Exercise> recommendations = tracker.generateRecommendations();
+        fitnessTracker.DisplayExercises();
 
-        tracker.displayProgress();
+        double totalCaloriesBurned = fitnessTracker.CalculateTotalCaloriesBurned();
+        Console.WriteLine($"Total Calories Burned: {totalCaloriesBurned} calories");
+
+        Console.ReadLine();
     }
 }
