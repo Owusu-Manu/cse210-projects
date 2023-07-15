@@ -1,33 +1,18 @@
-class User
+using System;
+
+public class User
 {
-    private string name;
-    private int age;
-    private double weight;
-    private double height;
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public double Height { get; set; }
+    public double Weight { get; set; }
 
-    public void setName(string name)
+    public void DisplayUserInfo()
     {
-        this.name = name;
-    }
-
-    public void setAge(int age)
-    {
-        this.age = age;
-    }
-
-    public void setWeight(double weight)
-    {
-        this.weight = weight;
-    }
-
-    public void setHeight(double height)
-    {
-        this.height = height;
-    }
-
-    public double calculateBMI()
-    {
-        // Calculate BMI logic here
-        return weight / (height * height);
+        Console.WriteLine($"Name: {Name}");
+        Console.WriteLine($"Age: {Age}");
+        Console.WriteLine($"Height: {Height} cm");
+        Console.WriteLine($"Weight: {Weight} kg");
+        Console.WriteLine();
     }
 }
